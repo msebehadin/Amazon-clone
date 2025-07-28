@@ -68,6 +68,7 @@ const Header: React.FC = () => {
           <div className={classes.cart_container}>
             <BiCart size={25} />
             <span className={classes.cart_count}>0</span>
+            
           </div>
         </a>
       </div>
