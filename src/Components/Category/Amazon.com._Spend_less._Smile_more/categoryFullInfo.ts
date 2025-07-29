@@ -7,6 +7,7 @@ export interface CategoryData {
   title: string;
   name: string;
   img: string;
+  product: unknown;
 }
 
 export const categoryImg: CategoryData[] = [
