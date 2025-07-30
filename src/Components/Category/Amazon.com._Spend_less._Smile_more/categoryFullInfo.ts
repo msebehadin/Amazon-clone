@@ -15,20 +15,24 @@ export const categoryImg: CategoryData[] = [
     title: 'Electronics',
     name: 'electronics',
     img: cat1,
+    product: undefined
   },
   {
     title: 'Discover fashion trends',
     name: "women's clothing",
     img: cat6,
+    product: undefined
   },
   {
     title: "Men's Clothing",
     name: "men's clothing",
     img: cat7,
+    product: undefined
   },
   {
     title: 'For your home',
     name: "home decor",
     img: cat3,
+    product: undefined
   },
 ];

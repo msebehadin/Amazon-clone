@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ProductCard from "./productCard";
-import { Grid, Container, Typography } from "@mui/material";
+import classes from './product.module.css'
 
+// Define the product type
 interface ProductType {
   id: number;
   title: string;
@@ -10,6 +11,7 @@ interface ProductType {
   description: string;
   image: string;
   category: string;
+  product: string;
 }
 
 const Product: React.FC = () => {
@@ -17,24 +19,22 @@ const Product: React.FC = () => {
 
   useEffect(() => {
     axios
-      .get("https://fakestoreapi.com/products?limit=15")
-      .then((res) => setProducts(res.data))
-      .catch((err) => console.error("Error fetching products:", err));
+      .get("https://fakestoreapi.com/products?limit=16")
+      .then((res) => {
+        console.log(res);
+        setProducts(res.data);
+      })
+      .catch((err) => {
+        console.error("Error fetching products:", err);
+      });
   }, []);
 
   return (
-    <Container sx={{ py: 4 }}>
-      <Typography variant="h5" gutterBottom fontWeight="bold">
-        Featured Products
-      </Typography>
-      <Grid container spacing={2}>
-        {products.map((p) => (
-          <Grid item key={p.id} xs={12} sm={6} md={4} lg={3}>
-            <ProductCard product={p} />
-          </Grid>
-        ))}
-      </Grid>
-    </Container>
+    <div className={classes.product_container}>
+      {products.map((singleProduct) => (
+        <ProductCard product={singleProduct} key={singleProduct.id} />
+      ))}
+    </div>
   );
 };
 
