@@ -1,5 +1,4 @@
 import React from "react";
-import Header from "../Header/header";
 type LayoutProps = {
   children: React.ReactNode;
 };
@@ -7,7 +6,7 @@ type LayoutProps = {
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <>
-      {/* <Header /> */}
+{/* <Header /> */}
       {children}
     </>
   );
