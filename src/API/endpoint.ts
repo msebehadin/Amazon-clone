@@ -1,2 +1,2 @@
-const BASE_URL = 'https://fakestoreapi.com/';
+const BASE_URL = "https://fakestoreapi.com";
 export default BASE_URL;

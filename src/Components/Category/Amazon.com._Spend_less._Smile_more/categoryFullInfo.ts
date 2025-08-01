@@ -31,7 +31,7 @@ export const categoryImg: CategoryData[] = [
   },
   {
     title: 'For your home',
-    name: "home decor",
+    name: "jewelry",
     img: cat3,
     product: undefined
   },
