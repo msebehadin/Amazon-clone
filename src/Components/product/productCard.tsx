@@ -2,6 +2,7 @@ import React from "react";
 import Rating from "@mui/material/Rating";
 import CurrencyFormat from "../CurrencyFormat/CurrencyFormat";
 import classes from './product.module.css'
+import { Link } from "react-router-dom";
 
 interface ProductType {
   id: number;
@@ -19,9 +20,9 @@ interface ProductCardProps {
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   return (
     <div className={classes.card_container}>
-      <a href="#">
+      <Link to={`/products/${product.id}`}>
         <img src={product.image} alt={product.title} style={{ width: "150px" }} />
-      </a>
+      </Link>
       <div>
         <h3>{product.title}</h3>
         <div className={classes.rating}>
