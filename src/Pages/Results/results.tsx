@@ -1,11 +1,13 @@
 import axios from "axios";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, type CSSProperties } from "react";
 import { useParams } from "react-router-dom";
 import BASE_URL from "../../API/endpoint";
 import Layout from "../../Components/layout/layout";
 import classes from "./results.module.css";
 import ProductCard from "../../Components/product/productCard";
 
+import Loading from "../../Components/loading/Loading";
+import product from "../../Components/product/product";
 // Define a type for your product data
 interface Product {
   id: string;
@@ -19,35 +21,39 @@ interface Product {
 
 const Results: React.FC = () => {
   const [results, setResults] = useState<Product[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const { categoryName } = useParams<{ categoryName: string }>();
 
   useEffect(() => {
     if (!categoryName) return;
-
-  axios
-  .get(`${BASE_URL}/products/category/${categoryName}`)
-  .then((res) => {
-    setResults(res.data);
-  })
-  .catch((err) => {
-    console.error("Error fetching category products:", err);
-  });
-
+    setIsLoading(true);
+    axios
+      .get(`${BASE_URL}/products/category/${categoryName}`)
+      .then((res) => {
+        setResults(res.data);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        console.error("Error fetching category products:", err);
+        setIsLoading(false);
+      });
   }, [categoryName]);
 
   return (
     <Layout>
       <div>
-        <h1 style={{ padding: "30px" }}>Results</h1>
-        <p style={{ padding: "30px" }}>Category / {categoryName}</p>
+        <h1 style={{ textAlign: "center" }}>Results</h1>
+        <p style={{ textAlign: "center" }}>Category / {categoryName}</p>
         <hr />
         <div className={classes.products_container}>
-          {results.length > 0 ? (
+          {isLoading ? (
+            <Loading />
+          ) : results.length > 0 ? (
             results.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))
           ) : (
-            <p style={{ padding: "30px" }}>No products found.</p>
+            <p>no product found ..</p>
           )}
         </div>
       </div>
