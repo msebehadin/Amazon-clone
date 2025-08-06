@@ -11,20 +11,27 @@ interface ProductType {
   description: string;
   image: string;
   category: string;
+  
 }
 
 interface ProductCardProps {
   product: ProductType;
 }
-
-const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+interface StyleDetail{
+  flex:boolean
+}
+interface renderDescProp{
+renderDesc:boolean
+}
+const ProductCard: React.FC<ProductCardProps&StyleDetail&renderDescProp> = ({ product,flex,renderDesc }) => {
   return (
-    <div className={classes.card_container}>
+    <div className={`${classes.card_container} ${flex?classes.product_flexed:''}`}>
       <Link to={`/products/${product.id}`}>
         <img src={product.image} alt={product.title} style={{ width: "150px" }} />
       </Link>
       <div>
         <h3>{product.title}</h3>
+        {renderDesc && <div style={{maxWidth:"750px"}}>{ product.description}</div>}
         <div className={classes.rating}>
           <Rating value={4.5} precision={0.1} readOnly />
           <small>{120}</small>
