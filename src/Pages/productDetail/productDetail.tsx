@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
-import Layout from "../../Components/layout/layout";
-import { useParams } from "react-router-dom";
 import axios from "axios";
-import ProductCard from "../../Components/product/productCard";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import BASE_URL from "../../API/endpoint";
+import Layout from "../../Components/layout/layout";
 import Loading from "../../Components/loading/Loading";
+import ProductCard from "../../Components/product/productCard";
 
 interface Product {
   id: number;
