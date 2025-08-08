@@ -5,6 +5,7 @@ import classes from "./product.module.css";
 import { Link } from "react-router-dom";
 import { DataContext } from "../dataProvider/dataProvider";
 import { type } from "../../utility/action.type";
+
 interface ProductType {
   id: number;
   title: string;
@@ -16,30 +17,36 @@ interface ProductType {
 
 interface ProductCardProps {
   product: ProductType;
-}
-interface StyleDetail {
   flex: boolean;
-}
-interface renderDescProp {
   renderDesc: boolean;
+  renderAdd: boolean;
 }
-const ProductCard: React.FC<
-  ProductCardProps & StyleDetail & renderDescProp
-> = ({ product, flex, renderDesc }) => {
-  const [state, dispatch] = useContext(DataContext);
+
+const ProductCard: React.FC<ProductCardProps> = ({
+  product,
+  flex,
+  renderDesc,
+  renderAdd,
+}) => {
+  const context = useContext(DataContext);
+  if (!context) return null;
+
+  const { dispatch } = context;
+
   const addCart = () => {
     dispatch({
       type: type.ADD_TO_BASKET,
       item: {
-        id,
-        title,
-        price,
-        description,
-        image,
-        category,
+        id: product.id,
+        title: product.title,
+        price: product.price,
+        description: product.description,
+        image: product.image,
+        category: product.category,
       },
     });
   };
+
   return (
     <div
       className={`${classes.card_container} ${
@@ -63,9 +70,11 @@ const ProductCard: React.FC<
           <small>{120}</small>
         </div>
         <CurrencyFormat amount={product.price} />
-        <button className={classes.btn} onClick={addCart}>
-          add to cart
-        </button>
+        {renderAdd && (
+          <button className={classes.btn} onClick={addCart}>
+            Add to Cart
+          </button>
+        )}
       </div>
     </div>
   );

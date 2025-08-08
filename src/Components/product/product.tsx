@@ -32,7 +32,7 @@ const Product: React.FC = () => {
   return (
     <div className={classes.product_container}>
       {products.map((singleProduct) => (
-        <ProductCard product={singleProduct} key={singleProduct.id} />
+        <ProductCard product={singleProduct} key={singleProduct.id} flex={false} renderDesc={false} renderAdd={true} />
       ))}
     </div>
   );

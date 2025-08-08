@@ -29,7 +29,7 @@ const Results: React.FC = () => {
 
     axios
       .get(`${BASE_URL}/products/category/${categoryName}`, {
-        signal: controller.signal
+        signal: controller.signal,
       })
       .then((res) => setResults(res.data))
       .catch((err) => {
@@ -57,7 +57,7 @@ const Results: React.FC = () => {
         ) : results.length > 0 ? (
           <div className={classes.products_container}>
             {results.map((product) => (
-              <ProductCard key={product.id} product={product} />
+              <ProductCard key={product.id} product={product} flex={false} renderDesc={false} renderAdd={true}  />
             ))}
           </div>
         ) : (
