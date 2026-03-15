@@ -5,15 +5,7 @@ import classes from "./product.module.css";
 import { Link } from "react-router-dom";
 import { DataContext } from "../dataProvider/dataProvider";
 import { type } from "../../utility/action.type";
-
-interface ProductType {
-  id: number;
-  title: string;
-  price: number;
-  description: string;
-  image: string;
-  category: string;
-}
+import type { ProductType } from "../../types/product";
 
 interface ProductCardProps {
   product: ProductType;

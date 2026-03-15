@@ -1,18 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ProductCard from "./productCard";
-import classes from './product.module.css'
-
-// Define the product type
-interface ProductType {
-  id: number;
-  title: string;
-  price: number;
-  description: string;
-  image: string;
-  category: string;
-  product: string;
-}
+import classes from "./product.module.css";
+import type { ProductType } from "../../types/product";
 
 const Product: React.FC = () => {
   const [products, setProducts] = useState<ProductType[]>([]);

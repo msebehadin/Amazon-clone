@@ -1,4 +1,3 @@
-import React from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import SignUp from "./Pages/Auth/signUp";
 import Cart from "./Pages/cart/cart";
@@ -6,9 +5,10 @@ import Header from "./Components/Header/header";
 import Order from "./Pages/order/order";
 import Home from "./Pages/landing/home";
 import Payment from "./Pages/payment/payment";
-import Results from "./Pages/Results/Results";
+import Results from "./Pages/Results/results";
 import ProductDetail from "./Pages/productDetail/productDetail";
-const Routeing: React.FC = () => {
+
+const Routeing = () => {
   return (
     <Router>
       <Header />

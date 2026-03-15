@@ -1,12 +1,12 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import Layout from "../../Components/layout/layout";
 import { DataContext } from "../../Components/dataProvider/dataProvider";
 import ProductCard from "../../Components/product/productCard";
 import CurrencyFormat from "../../Components/CurrencyFormat/CurrencyFormat";
 import { Link } from "react-router-dom";
-import {classes} from './cart.module.css'
+import classes from "./cart.module.css";
 
-const Cart: React.FC = () => {
+const Cart = () => {
   const context = useContext(DataContext);
   if (!context) return null;
 

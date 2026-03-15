@@ -1,27 +1,31 @@
 import { type } from "./action.type";
+import type { ProductType } from "../types/product";
 
 // Define the shape of the state
 export interface StateType {
-    basket: unknown[]; // Replace `unknown` with a more specific type if possible
-    item: unknown[];
+  basket: ProductType[];
+  item: ProductType[];
 }
 
 // Define the shape of the action
 export interface ActionType {
   type: string;
-  item?: unknown; // Replace `unknown` with a specific item type
+  item?: ProductType;
 }
 
 // Initial state
 export const initialState: StateType = {
-    basket: [],
-    item:[]
+  basket: [],
+  item: [],
 };
 
 // Reducer function
 export const reducer = (state: StateType, action: ActionType): StateType => {
   switch (action.type) {
     case type.ADD_TO_BASKET:
+      if (!action.item) {
+        return state;
+      }
       return {
         ...state,
         basket: [...state.basket, action.item],

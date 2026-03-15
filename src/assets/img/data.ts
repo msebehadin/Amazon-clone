@@ -5,4 +5,4 @@ import img4 from "./10004.jpg";
 import img5 from "./10005.jpg";
 
 
-export const img:unknown[] = [img1, img2, img3, img4, img5, ];
+export const img: string[] = [img1, img2, img3, img4, img5];
