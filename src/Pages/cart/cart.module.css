@@ -1,9 +1,11 @@
 .container {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     gap: 20px;
-    margin-top: 20px;
+    margin: 20px auto 40px;
+    padding: 0 20px;
+    flex-wrap: wrap;
 }
 .container img{
     width: 100px !important;
@@ -23,7 +25,9 @@
 
 .Subtotal {
     padding: 20px;
-    min-width: 300px;
+    min-width: 260px;
+    max-width: 380px;
+    width: 100%;
     height: 80%;
     display: flex;
     flex-direction: column;
@@ -54,5 +58,10 @@
     .container {
         flex-direction: column;
         order: 1;
+        align-items: stretch;
+    }
+
+    .Subtotal {
+        max-width: 100%;
     }
 }

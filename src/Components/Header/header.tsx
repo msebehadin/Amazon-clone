@@ -109,7 +109,7 @@ const Header: FC = () => {
             </Link>
 
             {/* Cart */}
-            <Link to="/cart" className={classes.cart_a}>
+            <Link to="/cart" className={classes.cart_link}>
               <div className={classes.cart_container} title="View Cart">
                 <svg
                   width="25"
